@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>InspecModule</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= yield %>
+    <div class="jumbotron text-center">
+    <h1 style="text-align: center">Welcome Back Admin!</h1>
+    </div>
+    <br><br><br>
+    <div class = "container center">
+        <div class="center" style="text-align: center">
+            <a href="#" class="btn btn-primary btn-lg ">Sign in as Admin</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <a href="#" class="btn btn-primary btn-lg ">Create a new Admin Account</a>
+        </div>
+    </div>
+    <h1></h1>
+  </body>
+</html>

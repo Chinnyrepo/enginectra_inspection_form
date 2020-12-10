@@ -1,0 +1,65 @@
+<script>
+    var comon = window.sessionStorage.getItem('currentProject');
+    var dsurleng = 'https://api.docspring.com/api/v1/submissions/'
+    dsurleng += comon;
+    let iFsLpackage = new XMLHttpRequest();
+    iFsLpackage.open('GET', dsurleng);
+    iFsLpackage.onreadystatechange = function() {
+        if (iFsLpackage.readyState == XMLHttpRequest.DONE) {
+                var resp = JSON.parse(this.responseText);
+                const SubKey = resp["download_url"];
+                document.getElementById("slframeid").src = SubKey;
+        }
+};
+    iFsLpackage.setRequestHeader('Authorization', 'Basic YXBpX2R4Q1M5TEhhenFjRzRrajVacDpBWlhzM3FoY2RYU21xdHFKTTlkempjTEdqTEdoeFFDSkNoZGZjaGoyeUE=')
+    iFsLpackage.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+    iFsLpackage.send();
+</script>
+<% def current_projectID
+    @current_projectID ||= Project.select(:id).where(engineer_id: current_user.id)%>
+  <%end%>
+
+<% @curprojstatus || = Project.select(:custcomment).where(project_id: current_projectID) %>
+<%end%>
+    <div class="container">
+      <div class="jumbotron">
+        <h2 style="text-align: center">Welcome to your Checklist</h2>
+      </div>
+    </div>
+    <div class="form-inline">
+      <button type="button" class="btn btn-primary" style="text-align: center">Go to Checklist</button>
+    </div>
+    <div>
+      <textarea rows="4" cols="50" name="custcomments"></textarea>
+    </div>
+    
+    <div>
+      <button type="submit" onclick = "chngeSonApprove()" formaction = '/custdashboard/custapprvSL' formmethod = 'get'>Approve</button>
+      <button type="submit" onclick = "chngeSonComment()">Submit for Review</button>
+    </div>
+
+
+   
+    <iframe src="" id="slframeid" width="600" height="900"></iframe>
+    
+
+    
+    
+    
+    
+    
+ 
+
+
+
+  
+
+
+
+
+
+
+
+
+
+

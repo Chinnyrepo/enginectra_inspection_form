@@ -1,0 +1,26 @@
+  development:
+    adapter: postgresql
+    encoding: utf8
+    reconnect: false
+    database: enginectrainspectionmodule
+    pool: 5
+    username: postgres
+    password: 12341234
+
+  test:
+    adapter: postgresql
+    encoding: utf8
+    reconnect: false
+    database: enginectrainspectionmodule
+    pool: 5
+    username: postgres
+    password: 12341234
+
+  production:
+    adapter: postgresql
+    encoding: utf8
+    reconnect: false
+    database: enginectrainspectionmodule
+    pool: 5
+    username: postgres
+    password: 12341234

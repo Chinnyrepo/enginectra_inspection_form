@@ -1,0 +1,91 @@
+<% def current_project
+    @current_project ||= Project.where(customer_id: session[:customer_id]).last
+%>
+<%end%>
+
+<%# <% def custreview 
+    @current_project ||= Project.where(customer_id: session[:customer_id]).last
+    current_project.update(workflow_state: "custnote")
+%>
+
+<input type="hidden" id="charlatan" value=<%= current_project.pslid %>>
+<script>
+    let newTonMagnet = 'https://api.docspring.com/api/v1/submissions/'
+    newTonMagnet += document.getElementById("charlatan").value;
+    let iFsLpackage = new XMLHttpRequest();
+    iFsLpackage.onreadystatechange = function() {
+        if (iFsLpackage.readyState == XMLHttpRequest.DONE) {
+                var resp = JSON.parse(this.responseText);
+                const SubKey = resp["download_url"];
+                document.getElementById("slframeid").src = SubKey;
+        }
+};
+    iFsLpackage.open('GET', newTonMagnet)
+    iFsLpackage.setRequestHeader('Authorization', 'Basic YXBpX2R4Q1M5TEhhenFjRzRrajVacDpBWlhzM3FoY2RYU21xdHFKTTlkempjTEdqTEdoeFFDSkNoZGZjaGoyeUE=')
+    iFsLpackage.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+    iFsLpackage.send();
+</script>
+<script>
+function chngeSonApprove() {
+	let ApprovedSLdone = "You approved the Scope Letter";
+	let ApprovedSLnext = "The enginner will either approve of or add edits to the Scope Letter";
+	window.sessionStorage.setItem('lttdonecust', ApprovedSLdone);
+	window.sessionStorage.setItem('lttnextcust', ApprovedSLnext);
+let blahblah = window.sessionStorage.getItem('lttcustdone')
+console.log(blahblah)
+window.location.href = '/custdashboard';
+};
+function chngeSonComment() {
+        let ApprovedSLdone = "Reviewed and Edited Preliminary Scope Letter";
+        let ApprovedSLnext = "The enginner will review your comments and edit/approve the Scope Letter";
+        window.sessionStorage.setItem('lttdonecust', ApprovedSLdone);
+        window.sessionStorage.setItem('lttnextcust', ApprovedSLnext);
+window.location.href = '/custdashboard/custreviewsl';
+};
+
+</script>
+
+
+<div class="container">
+    <div class="jumbotron">
+      <h2 style="text-align: center">Welcome to your Checklist</h2>
+    </div>
+    <div class="form-inline">
+    <button type="button" class="btn btn-primary" style="text-align: center">Go to Checklist</button>
+    &nbsp &nbsp &nbsp &nbsp &nbsp
+    </div>
+</div>
+
+<div>
+<textarea rows="4" cols="50" name="engcomments">
+</div>
+
+<div>
+<iframe src="" id="slframeid" width="600" height="800" ></iframe>
+</div>
+
+
+<div class = "container">
+<br>
+<form action = "/custchecklist/comments" method= "POST">
+<input type="hidden" name= "authenticity_token" value="<%=form_authenticity_token %>">
+<div class="form-group">
+    <label for="custcomment">Customer Comments</label><br><br>
+    <input type = "textarea" id = "custcomment" rows="4" cols="80" name="project[custcomment]" >
+    </div>
+</div>
+    
+
+
+<div>
+<button type="submit" onclick = "chngeSonApprove()" action = '/custdashboard/custapprvSL' formmethod = 'get'>Approve</button>
+<input type="submit" class="btn btn-primary" onclick = "chngeSonComment()" >
+</div>
+
+
+
+
+
+
+
+

@@ -1,0 +1,220 @@
+
+<head>
+<script>
+
+function pscopelettergenerator() {
+    let mainWork0 = "";
+    var mainWork = document.getElementById("projectwork")
+    mainWork0 += mainWork.value;
+    let nameIC0 = "";
+    var nameIC = document.getElementById("nameIC")
+    nameIC0 += nameIC.value;
+    let addressIC0 = "";
+    var addressIC = document.getElementById("addressIC")
+    addressIC0 += addressIC.value;
+    var nameESC = document.getElementById("nameESC")
+    var addressESC = document.getElementById("addressESC")
+    var emailESC = document.getElementById("emailESC")
+    var nameFPC = document.getElementById("nameFPC")
+    let repnameFPC0 = "";
+    var repnameFPC = document.getElementById("repnameFPC")
+    repnameFPC0 += repnameFPC.value;
+    var addressFPC = document.getElementById("addressFPC")
+    var emailFPC = document.getElementById("emailFPC")
+    var jobnumberFPC = document.getElementById("jobnumberFPC")
+    var task10 = "";
+    var task1 = document.getElementById("task1")
+    task10 += task1.value;
+    let task20 = "";
+    var task2 = document.getElementById("task2")
+    task20 += task2.value;
+    let task30 = "";
+    var task3 = document.getElementById("task3")
+    task30 += task3.value;
+    let task40 = "";
+    var task4 = document.getElementById("task4")
+    task40 += task4.value;
+    let task50 = "";
+    var task5 = document.getElementById("task5")
+    task50 += task5.value;
+    var task6 = document.getElementById("task6")
+    var task7 = document.getElementById("task7")
+    let currentDate = new Date();
+    let cDay = currentDate.getDate();
+    let cMonth = currentDate.getMonth() + 1;
+    let cYear = currentDate.getFullYear();
+    let Inspecdate = cDay + "/" + cMonth + "/" + cYear
+    let DOCSPRINGJSON2 = {mainwork: mainWork, nameIC: nameIC0, addressIC: addressIC, repnameFPC: repnameFPC, jobnumberFPC: jobnumberFPC,
+task1: task1, task2: task2, task3: task3, task4: task4,
+    task5: task5, date: Inspecdate, date2: Inspecdate, date3: Inspecdate};
+//    let runriver = JSON.stringify(DOCSPRINGJSON2);
+    let DOCSPRINGJSON1 = JSON.stringify({data: {mainwork: mainWork0, nameIC: nameIC0, addressIC: addressIC0, repnameFPC: repnameFPC0,
+task1: task10, task2: task20, task3: task30, task4: task40, task5: task50, date: Inspecdate, date2: Inspecdate, date3: Inspecdate}, test: true});
+//    let DOCSPRINGJSON3 = JSON.stringify(DOCSPRINGJSON1);
+//    let DOCSRPINGJSON4 = JSON.stringify(DOCSPRINGJSON3);
+    let iFsLpackage = new XMLHttpRequest();
+    iFsLpackage.onreadystatechange = function() {
+	if (iFsLpackage.readyState == XMLHttpRequest.DONE) {
+		var resp = JSON.parse(this.responseText);
+		const SubKey = resp["submission"];
+		const MarsKey = SubKey["id"]
+		document.getElementById("hiddenSubmissionID").value = MarsKey;
+//		sendSLid = new XMLHttpRequest();
+//		sendSLid.open('POST', 'http://159.89.113.161/stashSLid0')
+//		sendSLid.send(MarsKey)
+	}
+    };
+    iFsLpackage.open('POST', 'https://api.docspring.com/api/v1/templates/tpl_Mz9gqPxyRT2PbRraAn/submissions')
+    iFsLpackage.setRequestHeader('Authorization', 'Basic YXBpX2R4Q1M5TEhhenFjRzRrajVacDpBWlhzM3FoY2RYU21xdHFKTTlkempjTEdqTEdoeFFDSkNoZGZjaGoyeUE=')
+    iFsLpackage.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+    iFsLpackage.send(DOCSPRINGJSON1);
+
+    var ltstdonecust = "Submitted Inspection Request";
+    var ltstnextcust = "Review Scope Letter and Suggest Changes to Engineer -- Or Approve it if it looks good";
+//    document.getElementById("lttdonecust").innerHTML = ltstdonecust;
+//    document.getElementById("lttnextcust").innerHTML = ltstnextcust;
+    window.sessionStorage.setItem('lttnextcust', ltstnextcust);
+    window.sessionStorage.setItem('lttdonecust', ltstdonecust);
+}
+
+</script>
+
+
+</head>
+<div class = "float"> <h2> Inspection Module</h2></div>
+
+<div class = "container">
+<form action = "/custdashboard" method= "POST">
+<input type="hidden" name= "authenticity_token" value="<%=form_authenticity_token %>">
+    <div class = "float">
+   <div class="form-row">
+   <label for="whatneedstobeinspected"><b>What Needs to be Inspected?</b></label>
+   </div>
+    <div class="form-group col-md-6">
+      <input class="form-check-input" type="checkbox" value="" id="firealarmcb">
+  <label class="form-check-label" for="firealarm">
+    Fire Alarm
+  </label>
+    </div>
+    <div class="form-group col-md-6">
+      <input class="form-check-input" type="checkbox" value="" id="heatsensorcb">
+  <label class="form-check-label" for="heatsensor">
+    Heat Sensor
+  </label>
+    </div>
+    <div class="form-group col-md-6">
+      <input class="form-check-input" type="checkbox" value="" id="sprinklerscb">
+  <label class="form-check-label" for="sprinklers">
+    Sprinklers
+  </label>
+    </div>
+     <div class="form-group col-md-6">
+      <input class="form-check-input" type="checkbox" value="" id="smokedetectorcb">
+  <label class="form-check-label" for="smokedetector">
+    Smoke Detector
+  </label>
+    </div>
+<span class="label label-primary"><b>Inspection Company Information</b></span>
+    <div class="form-group">
+      <label for="companyname">Company Name</label>
+      <input type="text" class="form-control" id="nameIC" placeholder="Example Company Ltd" name = "project[Inspec_name]">
+    </div>
+  <div class="form-group">
+    <label for="companyaddress">Company Address</label>
+    <input type="text" class="form-control" id="addressIC" placeholder="1234 Main St., Calgary, AB, H1H 1H1" name = "project[Inspec_address]">
+  </div>
+  <span class="label label-primary"><b>Electrical Services Company Information</b></span>
+  <div class="form-group">
+    <label for="companyname">Company Name</label>
+    <input type="text" class="form-control" id="nameESC" placeholder="Example Company Ltd" name = "project[Elect_name]">
+  </div>
+    <div class="form-group">
+    <label for="companyaddress">Company Address</label>
+    <input type="text" class="form-control" id="addressESC" placeholder="1234 Main St., Calgary, AB, H2H 2H2" name = "project[Elect_address]">
+  </div>
+    <div class="form-group">
+    <label for="emailaddress">Company Email Address</label>
+    <input type="email" class="form-control" id="emailESC" placeholder="user@mydomain.com" name = "project[Elect_email]">
+  </div>
+   <span class="label label-primary"><b>Fire Protection Services Company Information</b></span>
+    <div class="form-group">
+        <div class="form-group">
+            <label for="companyname">Company Name</label>
+            <input type="text" class="form-control" id="nameFPC" placeholder="Example Company Ltd" name = "project[fp_name]">
+        </div>
+         <div class="form-group">
+            <label for="name">Representative's Name</label>
+            <input type="text" class="form-control" id="repnameFPC" placeholder="Full Name" name = "project[Fp_representative]">
+        </div>
+        <div class="form-group">
+            <label for="companyaddress">Company Address</label>
+            <input type="text" class="form-control" id="addressFPC" placeholder="1234 Main St., Calgary, AB, H3H 3H3" name = "project[fp_address]">
+        </div>
+        <div class="form-group">
+            <label for="emailaddress">Company Email Address</label>
+            <input type="text" class="form-control" id="emailFPC" placeholder="user@mydomain.com" name = "project[fp_email]">
+        </div>
+        <div class="form-group">
+            <label for="projectname">Please Assign the Project Name</label>
+            <input type="text" class="form-control" id="projectname" name="project[ProjectName]">
+        </div>
+        <div class="form-group">
+            <label for="jobnumber">Job Number (Optional)</label>
+            <input type="text" class="form-control" id="jobnumberFPC" name="project[JobNumber]" >
+        </div>
+        <%# <iframe src="https://app.acuityscheduling.com/schedule.php?owner=18477207" title="Schedule Appointment" width="100%" height="800" frameBorder="0"></iframe> %>
+        <div class="form-row">
+            <label for=>Do you require a Scope Letter</label>
+        </div>
+        <div class="form-group col-md-4">
+            <input class="form-check-input" type="checkbox" value="" id="yes">
+            <label class="form-check-label" for="yes">
+                Yes
+            </label>
+        </div>
+        <div class="form-group col-md-4">
+            <input class="form-check-input" type="checkbox" value="" id="no">
+            <label class="form-check-label" for="no">
+                No
+            </label>
+        </div>
+    <div class = "float">
+    <span class="label label-primary"><b>Scope Letter</b></span>
+    <div class="form-group">
+    <label >What is the main work of the project?</label>
+        <input type="text" class="form-control" id="projectwork" placeholder="Install Kitchen Suppression System and Relocate a Manual Station" name="project[Project_scope]">
+    </div>
+    <div class="form-group">   
+    <label for="projecttasks">What are the Individual Tasks of the Project (Provide up to 7 tasks if possible)? </label>
+    <input type="text" class="form-control" id="task1" placeholder="Install Kitchen suppresion system to the fire alarm panel"><br>
+    <input type="text" class="form-control" id="task2" placeholder="Relocate an existing manual station"><br>
+    <input type="text" class="form-control" id="task3" placeholder="Task 3"><br>
+    <input type="text" class="form-control" id="task4" placeholder="Task 4"><br>
+    <input type="text" class="form-control" id="task5" placeholder="Task 5"><br>
+    <input type="text" class="form-control" id="task6" placeholder="Task 6"><br>
+    <input type="text" class="form-control" id="task7" placeholder="Task 7"><br>
+    </div>
+
+    <button id ="btn2" type="button" name= "Submit" class="btn btn-primary submit" onclick ="pscopelettergenerator()">submit</button>
+    <button id ="btn1" type="submit" name= "Confirm Submission" class="btn btn-primary submit">Confirm Submission</button>
+    </div>
+
+</div>
+</div>
+
+  <input type="text" id="hiddenSubmissionID" name="project[pslid]">
+
+<script>
+$(document).ready(function(){
+  $("#btn1").click(function(){
+    $("#test1").val("Submitted Inspection Request. hello");
+     $("#test2").val("Review Scope Letter and Suggest Changes to Engineer -- Or Approve it if it looks good");
+  });
+});
+</script>
+</head>
+<body>
+
+
+
+

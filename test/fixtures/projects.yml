@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  EngineerID: MyString
+  CustomerID: MyString
+  Project_number: MyString
+  Project_scope: MyString
+  Elect_name: MyString
+  Elect_email: MyString
+  Elect_address: MyString
+  Fire_protection_name: MyString
+  Fire_protection_email: MyString
+  Fire_protection_address: MyString
+  Inspec_name: MyString
+  Inspec_address: MyString
+  Fp_representative: MyString
+
+two:
+  EngineerID: MyString
+  CustomerID: MyString
+  Project_number: MyString
+  Project_scope: MyString
+  Elect_name: MyString
+  Elect_email: MyString
+  Elect_address: MyString
+  Fire_protection_name: MyString
+  Fire_protection_email: MyString
+  Fire_protection_address: MyString
+  Inspec_name: MyString
+  Inspec_address: MyString
+  Fp_representative: MyString

@@ -1,0 +1,56 @@
+<script>
+function AddDropDownList() {
+	var palal = document.getElementById('optionpawn2').value;
+	console.log(palal);
+	window.sessionStorage.setItem('currentProject', palal);
+	var polol = window.sessionStorage.getItem('currentProject');
+	console.log(polol);
+};
+</script>
+<script>
+var lateststate = document.getElementById("lateststate").value;
+if @lateststate.workflow_state == 'awaiting_review' {document.getElementById('ltstengdone').value = "Customer Approved the Scope Letter"};
+else if @lateststate.workflow_state == 'submitted_review' {document.getElementById('ltstengdone').value = "Customer Submmited Edits"};
+</script>
+
+
+ <div class="container">
+    <div class="jumbotron">
+      <h2 style="text-align: center">Welcome to your Dashboard</h2>
+    </div>
+    <div class = "engineer">
+    <div class="form-inline>
+    <label for="status">Status</label>
+    <a class="text" style="text-align: center">Status</a>
+     &nbsp &nbsp &nbsp &nbsp &nbsp
+     <a href="/engchecklist" class="btn btn-primary" style="text-align: center">Go to Checklist</a>
+      &nbsp &nbsp &nbsp &nbsp &nbsp
+    <select "id="optionpawn1">
+    <option id="optionpawn" onchange="AddDropDownList()" value=<%= collection_select(:project, :engineer_id, Project.all, :id, :pslid, prompt: true) %>></option>
+    </select>
+    <input type="text" id="optionpawn2" onchange="AddDropDownList()" value = "Enter the ID of a project" />
+    </div>
+    </div>
+</div>
+
+<div id = "dvContainer"></div>    
+    
+    
+    
+    
+    
+</div>
+
+
+
+</div>   
+
+
+
+
+
+
+
+
+
+

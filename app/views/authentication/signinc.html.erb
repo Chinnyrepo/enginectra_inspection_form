@@ -1,0 +1,30 @@
+
+ <div class="container">
+    <div class="jumbotron">
+      <h1>welcome to enginectra</h1>
+      <h2>sign in as a customer</h2>
+<form action = "/sessions" method= "POST">
+<input type="hidden" name= "authenticity_token" value="<%=form_authenticity_token %>">
+  <div class="form-group">
+    <label for="email">email address</label>
+    <input type="email" class="form-control" id="email" name= "login[email]" placeholder="name@example.com">
+  </div>
+
+  <div class="form-group">
+    <label for="password">password</label>
+    <input type="password" class="form-control" id="password" name = "login[password]">
+  </div>
+   <input type="submit" name= "submit" class="btn btn-primary submit">
+</form>
+</div>
+</div>   
+
+
+
+
+
+
+
+
+
+

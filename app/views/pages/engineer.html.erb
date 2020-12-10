@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>InspecModule</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= yield %>
+    <div class="jumbotron text-center">
+    <h1 style="text-align: center">Welcome Engineers!</h1>
+    </div>
+    <br><br><br>
+    <div class = "container center" >
+        <div class="center" style="text-align: center">
+            <a href="signine" class="btn btn-primary btn-lg ">I am a returning Engineer</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            
+            <a href="/signupe" class="btn btn-primary btn-lg ">I am a New Engineer</a>
+        </div>
+    </div>
+    <h1></h1>
+  </body>
+</html>

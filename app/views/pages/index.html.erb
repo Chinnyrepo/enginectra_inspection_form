@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>InspecModule</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= yield %>
+    <div class="jumbotron text-center">
+    <h1 style="text-align: center">Book fire Alarm Verification</h1>
+    </div>
+    <br><br><br>
+    <div class = "container center">
+        <div class="center" style="text-align: center">
+        
+            <a href="signinc" class="btn btn-primary btn-lg ">I am a returning Customer</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <a href="signupc" class="btn btn-primary btn-lg ">I am a New Customer</a>
+        
+        </div>
+    </div>
+  </body>
+</html>

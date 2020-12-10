@@ -1,0 +1,50 @@
+
+ <div class="container">
+    <div class="jumbotron">
+      <h2 style="text-align: center">Welcome to your Checklist</h2>
+    </div>
+    <div class="form-inline">
+    <button type="button" class="btn btn-primary" style="text-align: center">Go to Checklist</button>
+    &nbsp &nbsp &nbsp &nbsp &nbsp
+    <div class="dropdown" style="text-align: center">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="text-align: center">
+    Choose Project
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+        <a class="dropdown-item" href="#">Link 3</a>
+      </div>
+    </div>
+    
+    </div>
+<table>
+<tr>
+    <th>blah blah</th>
+</tr>
+<%= Project.all.each do |project| %>
+<%= Project.where(customer_id: current_user.id && id: current_project.id).find_each do |project|%>
+<% end %>
+<tr>
+<td><%= project.pslid %></td>
+<% end %>
+</tr>
+</table>
+</div>    
+    
+    
+    
+    
+    
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
