@@ -14,26 +14,37 @@ else if @lateststate.workflow_state == 'submitted_review' {document.getElementBy
 </script>
 
 
- <div class="container">
+  <div class="container">
     <div class="jumbotron">
       <h2 style="text-align: center">Welcome to your Dashboard</h2>
     </div>
-    <div class = "engineer">
-    <div class="form-inline>
-    <label for="status">Status</label>
-    <a class="text" style="text-align: center">Status</a>
+  </div>
+
+  <div class="container">
      &nbsp &nbsp &nbsp &nbsp &nbsp
      <a href="/engchecklist" class="btn btn-primary" style="text-align: center">Go to Checklist</a>
       &nbsp &nbsp &nbsp &nbsp &nbsp
-    <select "id="optionpawn1">
+    <select id="optionpawn1">
     <option id="optionpawn" onchange="AddDropDownList()" value=<%= collection_select(:project, :engineer_id, Project.all, :id, :pslid, prompt: true) %>></option>
     </select>
     <input type="text" id="optionpawn2" onchange="AddDropDownList()" value = "Enter the ID of a project" />
-    </div>
-    </div>
-</div>
+  </div>
+    
 
-<div id = "dvContainer"></div>    
+
+<div class = "container">
+ <label >Status</label>
+  <div class="form-group">
+    <label for="Done">Done </label> 
+    <textarea readonly  rows="1" cols="70" name="engdone" id = "statusdone"  > <%=@engdone%> </textarea>
+  </div>
+  <div class="form-group">
+    <label for="Next">Next</label> 
+    <textarea readonly  rows="1" cols="70" name="engnext" id = "statusnext"  > <%=@engnext%> </textarea>
+    
+  </div>
+
+</div>    
     
     
     

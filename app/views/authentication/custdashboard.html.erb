@@ -60,39 +60,22 @@ function selectedproject() {
  
 </div>
 
+<div class = "container">
+ <label >Status</label>
+  <div class="form-group">
+    <label for="Done">Done </label> 
+    <textarea readonly  rows="1" cols="100" name="engdone" id = "statusdone"  > <%=@custdone%> </textarea>
+  </div>
+  <div class="form-group">
+    <label for="Next">Next</label> 
+    <textarea readonly  rows="1" cols="100" name="engnext" id = "statusnext"  > <%=@custnext%> </textarea>
+    
+  </div>
 
-
-    <%# <div class="dropdown" style="text-align: center">
-      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="text-align: center">
-    Choose Project
-      </button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Link 1</a>
-        <a class="dropdown-item" href="#">Link 2</a>
-        <a class="dropdown-item" href="#">Link 3</a>
-      </div>
-    </div>
-    </div> %>
+</div>    
     
 </div>
 
-<body onload = "myfunc()" >
-  <div class="form-group">
-    <label for="Done">Done </label> 
-    <%# <input type="text" class="form-control" id="lttdonecust" name = " "> %>
-    <p id = "lttdonecust"> </p>
-    <%# <p>Done: <input type="text" id="test1" value=" "></p> %>
-  </div>
-
- 
-  <div class="form-group">
-    <label for="Next">Next</label> 
-    <%# <input type="text" class="form-control" id="lttnextcust" name = " ">  %>
-    <p id = "lttnextcust"> </p> 
-    <%# <p>Next: <input type="text" id="test2" value=" "></p> %>
-  </div>
-
-</body>
 
   <%# code to display all projects for admin %>
   <%# <table>

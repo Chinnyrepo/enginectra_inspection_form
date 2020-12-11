@@ -1,9 +1,9 @@
 <div class="container">
     <div class="jumbotron">
       
-      <h2>Please Complete your Profile</h2>
+      <h2>Please Fill out the Certificate Report</h2>
     
-<form action = "/signine" method= "POST">
+<form action = "/engchecklist/certificatereport" method= "POST">
 <input type="hidden" name= "authenticity_token" value="<%=form_authenticity_token %>">
 
    <div class="form-group">
@@ -18,7 +18,7 @@
     <label for="password">Confirm Password</label>
     <input type="password" class="form-control" id="password_confirmation" name = "engineer[password_confirmation]">
   </div>
-  <input type="submit" name= "submit" class="btn btn-primary submit">
+  <input type="submit" name= "submit" class="btn btn-primary submit" placeholder = "Issue the Certificate Report">
 
 </form>
 </div>

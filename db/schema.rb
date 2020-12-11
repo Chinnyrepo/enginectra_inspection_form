@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201208224904) do
+ActiveRecord::Schema.define(version: 20201210183354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 20201208224904) do
     t.string "workflow_state"
     t.string "custcomment"
     t.string "engcomment"
+    t.boolean "custapproval"
+    t.boolean "engapproval"
     t.index ["customer_id"], name: "index_projects_on_customer_id"
     t.index ["engineer_id"], name: "index_projects_on_engineer_id"
   end

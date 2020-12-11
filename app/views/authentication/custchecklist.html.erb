@@ -26,22 +26,22 @@
     iFsLpackage.send();
 </script>
 <script>
-function chngeSonApprove() {
-	let ApprovedSLdone = "You approved the Scope Letter";
-	let ApprovedSLnext = "The enginner will either approve of or add edits to the Scope Letter";
-	window.sessionStorage.setItem('lttdonecust', ApprovedSLdone);
-	window.sessionStorage.setItem('lttnextcust', ApprovedSLnext);
-let blahblah = window.sessionStorage.getItem('lttcustdone')
-console.log(blahblah)
-window.location.href = '/custdashboard';
+ function chngeSonApprove() {
+// 	let ApprovedSLdone = "You approved the Scope Letter";
+// 	let ApprovedSLnext = "The enginner will either approve of or add edits to the Scope Letter";
+// 	window.sessionStorage.setItem('lttdonecust', ApprovedSLdone);
+// 	window.sessionStorage.setItem('lttnextcust', ApprovedSLnext);
+// let blahblah = window.sessionStorage.getItem('lttcustdone')
+// console.log(blahblah)
+window.location.href = 'custchecklist/approve';
 };
-function chngeSonComment() {
-        let ApprovedSLdone = "Reviewed and Edited Preliminary Scope Letter";
-        let ApprovedSLnext = "The enginner will review your comments and edit/approve the Scope Letter";
-        window.sessionStorage.setItem('lttdonecust', ApprovedSLdone);
-        window.sessionStorage.setItem('lttnextcust', ApprovedSLnext);
-window.location.href = '/custdashboard/custreviewsl';
-};
+// function chngeSonComment() {
+//         let ApprovedSLdone = "Reviewed and Edited Preliminary Scope Letter";
+//         let ApprovedSLnext = "The enginner will review your comments and edit/approve the Scope Letter";
+//         window.sessionStorage.setItem('lttdonecust', ApprovedSLdone);
+//         window.sessionStorage.setItem('lttnextcust', ApprovedSLnext);
+// window.location.href = '/custchecklist/comments';
+// };
 
 </script>
 
@@ -56,11 +56,12 @@ window.location.href = '/custdashboard/custreviewsl';
     </div>
 </div>
 
-<div>
-<textarea rows="4" cols="50" name="engcomments">
-</div>
+ <div class = "container">
+      <label for="engcomment">Engineer's Comments</label><br>
+      <textarea readonly  rows="4" cols="50" name="engcomment" id = "status"><%=@engcomm[0] %></textarea>
+    </div>
 
-<div>
+<div class = "container">
 <iframe src="" id="slframeid" width="600" height="800" ></iframe>
 </div>
 
@@ -72,14 +73,15 @@ window.location.href = '/custdashboard/custreviewsl';
 <div class="form-group">
     <label for="custcomment">Customer Comments</label><br><br>
     <input type = "textarea" id = "custcomment" rows="4" cols="80" name="project[custcomment]" >
-    </div>
+    <input type="submit" class="btn btn-primary" method = "POST" >
+</div>
+</form>
 </div>
     
 
 
-<div>
-<button type="submit" onclick = "chngeSonApprove()" action = '/custdashboard/custapprvSL' formmethod = 'get'>Approve</button>
-<input type="submit" class="btn btn-primary" onclick = "chngeSonComment()" >
+<div  class = "container">
+<input type="submit" onclick = "chngeSonApprove()"  class="btn btn-primary" method = "get">
 </div>
 
 

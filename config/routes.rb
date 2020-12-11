@@ -19,9 +19,11 @@ Rails.application.routes.draw do
   get "/custdashboard" => "authentication#custdashboard"
   get "/custchecklist" => "authentication#custchecklist"
 
-#approved scope letter customer
-  get "/custdashboard/custapprvSL" => "authentication#engchecklist"
-  get "/custdashboard/custreviewsl"=> "authentication#custreview"
+  #approved scope letter customer
+  get "custchecklist/approve" => "authentication#approved"
+  
+  #approved scope letter Engineer
+  post "engchecklist/approve" => "engineer#approved"
 
   #Engineer Dashboard & Checklist
   get "/engdashboard" => "engineer#engdashboard"
@@ -39,7 +41,8 @@ Rails.application.routes.draw do
   #customer comments 
   post "/custchecklist/comments" => "authentication#custcomment"
 
-
+  #engineer comments
+  post "/engchecklist/comments" => "engineer#engcomment"
 
 
 
