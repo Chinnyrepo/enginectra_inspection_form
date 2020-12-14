@@ -1,0 +1,173 @@
+<script>
+
+function certificatereport() {
+console.log("hello!!!!!!")
+    let mainWork0 = "";
+    var mainWork = document.getElementById("projectwork")
+    mainWork0 += mainWork.value;
+    let nameIC0 = "";
+    var nameIC = document.getElementById("nameIC")
+    nameIC0 += nameIC.value;
+    let addressIC0 = "";
+    var addressIC = document.getElementById("addressIC")
+    addressIC0 += addressIC.value;
+    let nameESC0 = "";
+    var nameESC = document.getElementById("nameESC")
+    nameESC0 += nameESC.value;
+    addressESC0 = "";
+    var addressESC = document.getElementById("addressESC")
+    addressESC0 += addressESC.value;
+    let nameFPC0 = "";
+    var nameFPC = document.getElementById("nameFPC")
+    nameFPC0 += nameFPC.value;
+    let projectno0 = "";
+    var projectno = document.getElementById("projectno")
+    projectno0 += projectno.value;
+    let engineerinitials0 = "";
+    var engineerinitials = document.getElementById("engineerInitials")
+    engineerinitials0 += engineerinitials.value;
+    let notes0 = "";
+    var notes = document.getElementById("notes")
+    notes0 += notes.value;
+    var task01 = "";
+    var task1 = document.getElementById("task1")
+    task01 += task1.value;
+    let task02 = "";
+    var task2 = document.getElementById("task2")
+    task02 += task2.value;
+    let task03 = "";
+    var task3 = document.getElementById("task3")
+    task03 += task3.value;
+    let currentDate = new Date();
+    let cDay = currentDate.getDate();
+    let cMonth = currentDate.getMonth() + 1;
+    let cYear = currentDate.getFullYear();
+    let Inspecdate = cDay + "/" + cMonth + "/" + cYear
+    let DOCSPRINGJSON2 = {DATE1: Inspecdate, PROJECTNUMBER:  projectno0, ESCNAME: nameESC0, ESCADDRESS: addressESC0, INSPECNAME: nameIC0, INSPECADDRESS: addressIC0,
+                          WORK1: task01, WORK2: task02, WORK3: task03, DATE2: Inspecdate, FPCNAME: nameFPC0, ENGINITIALS: engineerinitials0, ENGNOTES: notes0,
+ DATE3: Inspecdate};
+
+    let DOCSPRINGJSON1 = JSON.stringify({data: {DATE1: Inspecdate, PROJECTNUMBER:  projectno0, ESCNAME: nameESC0, ESCADDRESS: addressESC0, INSPECNAME: nameIC0, INSPECADDRESS: addressIC0, WORK1: task01, WORK2: task02, WORK3: task03, DATE2: Inspecdate, FPCNAME: nameFPC0, ENGINITIALS: engineerinitials0, ENGNOTES: notes0, DATE3: Inspecdate}, test: true});
+    let iFcRpackage = new XMLHttpRequest();
+    iFcRpackage.onreadystatechange = function() {
+	if (iFcRpackage.readyState == XMLHttpRequest.DONE) {
+		var resp = JSON.parse(this.responseText);
+		const SubKey = resp["submission"];
+		const MarsKey = SubKey["id"]
+		window.sessionStorage.setItem('CRsubID', MarsKey);
+                document.getElementById('hiddenSubmissionID').value = MarsKey;
+                var tolo = document.getElementById('hiddenSubmissionID').value
+                console.log(tolo)
+	};
+    };
+    iFcRpackage.open('POST', 'https://api.docspring.com/api/v1/templates/tpl_SPxmeASKJffsSfn4ym/submissions')
+    iFcRpackage.setRequestHeader('Authorization', 'Basic YXBpX2R4Q1M5TEhhenFjRzRrajVacDpBWlhzM3FoY2RYU21xdHFKTTlkempjTEdqTEdoeFFDSkNoZGZjaGoyeUE=')
+    iFcRpackage.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+    iFcRpackage.send(DOCSPRINGJSON1);
+
+    // var ltstdonecust = "Submitted Inspection Request";
+    // var ltstnextcust = "Review Scope Letter and Suggest Changes to Engineer -- Or Approve it if it looks good";
+    // window.sessionStorage.setItem('lttnextcust', ltstnextcust);
+    // window.sessionStorage.setItem('lttdonecust', ltstdonecust);
+};
+function viewCRpreview () {
+		let YerBor = window.sessionStorage.getItem('CRsubID');
+                let mopoto = new XMLHttpRequest();
+                mopoto.onreadystatechange = function() {
+                  if (mopoto.readyState == XMLHttpRequest.DONE) {
+                        console.log("help0");                                                                                                                                                    if (mopoto.status === 200) {
+                        console.log("help");
+                        var respl = JSON.parse(mopoto.responseText);
+                        console.log(respl);
+                        const howdoyousleep = respl["download_url"]
+                        console.log(howdoyousleep);
+                        document.getElementById("slframeid9").src = howdoyousleep;
+                        };
+                        };
+                };
+                let harekrish = 'https://api.docspring.com/api/v1/submissions/';
+                harekrish += YerBor;
+console.log(harekrish);
+                mopoto.open('GET', harekrish)
+                mopoto.setRequestHeader('Authorization', 'Basic YXBpX2R4Q1M5TEhhenFjRzRrajVacDpBWlhzM3FoY2RYU21xdHFKTTlkempjTEdqTEdoeFFDSkNoZGZjaGoyeUE=')
+                mopoto.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+                mopoto.send();
+};
+function finalCRsubmit() {
+	let freakphone = "/engineer/submitCR/?crsubid=";
+        let dontalone = window.sessionStorage.getItem('CRsubID');
+	freakphone += dontalone;
+window.location.href = freakphone;
+};
+</script>
+
+<div class="container">
+<button id ="btn3" type="button" name= "" class="btn btn-primary submit" onclick ="()">Dashboard</button>
+    <div class="jumbotron">
+      
+      <h2>Please Fill out the Certificate Report</h2>
+
+  <div class = "container">
+<form>
+<input type="hidden" name= "authenticity_token" value="<%=form_authenticity_token %>">
+  
+
+    <div class="form-group">
+      <label for="companyname">Project No</label>
+      <input type="text" class="form-control" id="projectno"  name = "certificatereport[Project_No]">
+    </div>
+  <span class="label label-primary"><b>Electrical Services Company Information</b></span>
+  <div class="form-group">
+    <label for="companyname">Company Name</label>
+    <input type="text" class="form-control" id="nameESC" placeholder="Example Company Ltd" name = "certificatereport[Elect_name]">
+  </div>
+    <div class="form-group">
+    <label for="companyaddress">Company Address</label>
+    <input type="text" class="form-control" id="addressESC" placeholder="1234 Main St., Calgary, AB, H2H 2H2" name = "certificatereport[Elect_address]">
+  </div>
+   <span class="label label-primary"><b>Inspection Company Information</b></span>
+    <div class="form-group">
+      <label for="companyname">Company Name</label>
+      <input type="text" class="form-control" id="nameIC" placeholder="Example Company Ltd" name = "certificatereport[Inspec_name]">
+    </div>
+  <div class="form-group">
+    <label for="companyaddress">Company Address</label>
+    <input type="text" class="form-control" id="addressIC" placeholder="1234 Main St., Calgary, AB, H1H 1H1" name = "certificatereport[Inspec_address]">
+  </div>
+  <div class="form-group">
+    <label >What is the main work of the project?</label>
+        <input type="text" class="form-control" id="projectwork" placeholder="Install Kitchen Suppression System and Relocate a Manual Station" name="certificatereport[Project_scope]">
+    </div>
+    <div class="form-group">   
+    <label for="projecttasks">What are the Individual Tasks of the Project (Provide up to 7 tasks if possible)? </label>
+    <input type="text" class="form-control" id="task1" placeholder="Install Kitchen suppresion system to the fire alarm panel"><br>
+    <input type="text" class="form-control" id="task2" placeholder="Relocate an existing manual station"><br>
+    <input type="text" class="form-control" id="task3" placeholder="Task 3"><br>
+   <span class="label label-primary"><b>Fire Protection Services Company Information</b></span>
+    <div class="form-group">
+        <div class="form-group">
+            <label for="companyname">Company Name</label>
+            <input type="text" class="form-control" id="nameFPC" placeholder="Example Company Ltd" name = "certificatereport[fp_name]">
+        </div>
+         <div class="form-group">
+            <label for="initials">Engineer's Initials</label>
+            <input type="text" class="form-control" id="engineerInitials" placeholder="C.O" name = "certificatereport[Eng_initials]">
+        </div>
+        <div class="form-group">
+            <label for="notes">Notes</label>
+            <input type="text" class="form-control" id="notes" placeholder="Please enter your notes here" name = "certificatereport[Eng_notes]">
+        </div>     
+    <%# <button id ="btn2" type="submit" name= "Submit" class="btn btn-primary submit" onclick ="certificatereport()">submit</button> %>
+    <%# <button id ="btn1" type="submit" name= "Confirm Submission" class="btn btn-primary submit">Confirm Submission</button> %>
+</form>
+    </div>
+
+</div>
+</div>
+    <button id ="btn2" type="button" name= "Submit" class="btn btn-primary submit" onclick ="certificatereport()">Create</button>
+    <button id ="btn1" type="button" name= "Confirm Submission" class="btn btn-primary submit" onclick = "viewCRpreview()">View Certificate Report Preview</button>
+    <input type="text" id="hiddenSubmissionID" name="project[subid]">
+<button id ="btn3" type="submit" class="btn btn-primary submit" onclick = "finalCRsubmit()">Submit</button>
+<div class = "container">
+    <iframe id="slframeid9" width="600" height="900"></iframe>
+    </div>

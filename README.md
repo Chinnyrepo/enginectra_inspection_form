@@ -21,20 +21,6 @@ Things you may want to cover:
 
 * Deployment instructions
 
-// function redirect(){
-//   let redirectto = new XMLHttpRequest();
-//   redirectto.open('GET', 'engchecklist/approve');
-  
-//   redirectto.onreadystatechange = function() {
-//     if (this.readyState === XMLHttpRequest.DONE) {
-//         if (this.status === 204) {
-//             window.location.href = '/engdashboard';
-//         }
-       
-//   }
 
-// }
-// redirectto.send()
-// };
 
 * ...

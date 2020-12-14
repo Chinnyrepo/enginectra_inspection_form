@@ -4,6 +4,7 @@ class AuthenticationController < ApplicationController
   def custdashboard
     @current_projectID ||= Project.select(:id).where(customer_id: current_user.id).last
     @status = Project.where(id: @current_projectID).pluck(:workflow_state)
+    @crsubid = Project.where(id: @current_projectID).pluck(:crsubid)
     if @status[0] == 'engnote'
       @custdone = 'Engineer submitted Additional Comments for the Scope Letter'
       @custnext = ' Review and Approve the Scope Letter, Or Provide Additional Comments'
@@ -23,8 +24,10 @@ class AuthenticationController < ApplicationController
     elsif @status[0] == "engapprovedA"
       @custdone = 'Engineer Approved of the Scope Letter.'
       @custnext = 'Approve the Scope Letter to move forward with the inspection or provide additional comments to keep it in review.'
-
-
+    
+    elsif @status[0] == "CRsubmitted"
+      @custdone = 'The Engineer has issued the Certificate Report'
+      @custnext = 'Review the Certificate Report in your Checklist'
     end
 
   end

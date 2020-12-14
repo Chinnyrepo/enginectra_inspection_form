@@ -2,21 +2,23 @@
     <div class="jumbotron">
       
       <h2>Please Complete your Profile</h2>
-    
-<form action = "/signine" method= "POST">
+ <div class = "container">
+<p id="notice"><%= notice %></p>
+</div>   
+<form action = "/engineerprofile" method= "POST">
 <input type="hidden" name= "authenticity_token" value="<%=form_authenticity_token %>">
 
    <div class="form-group">
-    <label for="email">Email address</label>
-    <input type="email" class="form-control" id="email" name = "engineer[email]">
+    <label for="fname">First Name (optional)</label>
+    <input type="text" class="form-control" id="fname" name = "engineer[fname]">
   </div>
   <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" class="form-control" id="password" name = "engineer[password]">
+    <label for="lname">Last Name (optional)</label>
+    <input type="text" class="form-control" id="lname" name = "engineer[lname]">
   </div>
    <div class="form-group">
-    <label for="password">Confirm Password</label>
-    <input type="password" class="form-control" id="password_confirmation" name = "engineer[password_confirmation]">
+    <label for="seal">Engineer's Seal</label>
+    <input  type="file" class="form-control" id="seal" name = "engineer[seal]">
   </div>
   <input type="submit" name= "submit" class="btn btn-primary submit">
 

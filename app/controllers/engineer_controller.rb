@@ -2,19 +2,19 @@ class EngineerController < ApplicationController
 
   skip_before_action :verify_authenticity_token
 
-
-
   def singupc; end
 
+<<<<<<< HEAD
+  def engprofile; end
 
-
+=======
+>>>>>>> 82cbca8fca85f5805bb1a9c668f14d655ed66a0c
   def singine; end
-
-
 
   def signupe; end
 
-
+  def certificatereport; 
+  end
 
   def engdashboard
 
@@ -59,11 +59,22 @@ class EngineerController < ApplicationController
 
       @engnext = 'Wait for the customer to approve the Scope Letter'
 
+    elsif @status[0] == "CRsubmitted"
+      @engdone = "You issued the Certificate Report to the Customer"
+      @engnext = "Hurray! You've completed another project!"
+
     end
 
   end
 
+  def submitCR
 
+      @project = Project.where(engineer_id: 2).last
+      @project.crsubid = params[:crsubid]
+      @project.workflow_state = "CRsubmitted"
+      @project.save
+      redirect_to '/engdashboard'
+  end   
 
   def engchecklist
 
@@ -159,6 +170,20 @@ class EngineerController < ApplicationController
 
 
 
+  def completeprofile
+    @engineer = Engineer.where(engineer_id: 2)
+    # @engineer.seal = (engprofile_params[:seal])
+    @engineer.update(fname: engprofile_params[:fname])
+    # @engineer.lname = (engprofile_params[:lname])
+    @engineer.save
+    flash[:notice] = 'Successfully Updated Profile'
+    redirect_to "engdashbaord"
+
+  end
+
+
+
+
   # update status function
 
   # def updatestatus
@@ -175,7 +200,9 @@ class EngineerController < ApplicationController
 
   # end
 
-
+  def engprofile_params
+    params.require(:engineer).permit(:fname , :lname, :seal)
+  end
 
  # private
   def engcomment_params
@@ -194,21 +221,30 @@ class EngineerController < ApplicationController
 
 
 
+<<<<<<< HEAD
+=======
 #  private
 
+>>>>>>> 82cbca8fca85f5805bb1a9c668f14d655ed66a0c
 def engapproval_params
 
   params.require(:project).permit(:engapproval)
 
 end
 
+def crsubmit_params
 
+ params.require(:project).permit(:subid)
+
+end
 
   def current_projectID
 
     @current_projectID ||= Project.select(:id).where(engineer_id: current_user.id).last
 
   end
+
+  
 
 
 

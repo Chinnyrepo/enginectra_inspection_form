@@ -21,6 +21,12 @@ Rails.application.routes.draw do
 
   #approved scope letter customer
   get "custchecklist/approve" => "authentication#approved"
+
+  #When a button is clicked to issue the certificate report
+  get "engchecklist/issuecr" => "engineer#certificatereport"
+
+  #Engineer issue a certificate report
+ 
   
   #approved scope letter Engineer
   post "engchecklist/approve" => "engineer#approved"
@@ -44,7 +50,11 @@ Rails.application.routes.draw do
   #engineer comments
   post "/engchecklist/comments" => "engineer#engcomment"
 
-
+  #engineer complete profile
+  get '/engprofile', to: "engineer#engprofile"
+  post "/engineerprofile" => "engineer#completeprofile"
+ #engineer submit CR
+  get "engineer/submitCR" => "engineer#submitCR"
 
   #sign in Engineer
   # get '/signine', to: "authentication#signine"
