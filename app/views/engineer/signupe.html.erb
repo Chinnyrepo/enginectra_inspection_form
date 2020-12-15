@@ -3,12 +3,25 @@
       <h1>Welcome To Enginectra</h1>
       <h2>Sign Up as an Engineer</h2>
     
-<form action = "/signine" method= "POST">
+<form action = "/signine" method= "POST" enctype = "multipart/form-data">
 <input type="hidden" name= "authenticity_token" value="<%=form_authenticity_token %>">
 
    <div class="form-group">
     <label for="email">Email address</label>
     <input type="email" class="form-control" id="email" name = "engineer[email]">
+  </div>
+    <div class="form-group">
+    <label for="fname">First Name (optional)</label>
+    <input type="text" class="form-control" id="fname" name = "engineer[fname]">
+  </div>
+  <div class="form-group">
+    <label for="lname">Last Name (optional)</label>
+    <input type="text" class="form-control" id="lname" name = "engineer[lname]">
+  </div>
+   <div class="form-group">
+    <label for="seal">Engineer's Seal</label>
+    <input  type="file" class="form-control" id="seal" name = "engineer[image]">
+    
   </div>
   <div class="form-group">
     <label for="password">Password</label>
@@ -18,6 +31,7 @@
     <label for="password">Confirm Password</label>
     <input type="password" class="form-control" id="password_confirmation" name = "engineer[password_confirmation]">
   </div>
+
   <input type="submit" name= "submit" class="btn btn-primary submit">
 
 </form>

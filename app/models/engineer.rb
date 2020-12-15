@@ -1,5 +1,7 @@
 class Engineer < ApplicationRecord
-
+  require 'carrierwave/orm/activerecord'
+  mount_uploader :sealimage, SealimageUploader
+  has_one_attached :image
   has_many :projects
   has_many :customers, :through => :projects
 

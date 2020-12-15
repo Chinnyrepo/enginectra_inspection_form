@@ -1,15 +1,14 @@
 class SessionsengineerController < ApplicationController
    
   def create 
-    engineer = Engineer.find_by(email: login_params[:email])
-    if engineer && engineer.authenticate(login_params[:password])
-      # encrypted version of the customer id is stored in the cookies 
-      session[:engineer_id] = engineer.id           
-      redirect_to '/engdashboard'
-    else
-      flash[:login_errors] = ['invalid credentials']
-      redirect_to '/signine'
-    end
+     engineer = Engineer.find_by(email: login_params[:email])
+     if engineer && engineer.authenticate(login_params[:password])
+       session[:engineer_id] = engineer.id           
+       redirect_to '/engdashboard'
+     else
+       flash[:login_errors] = ['invalid credentials']
+       redirect_to '/signine'
+     end
   end
 
   private

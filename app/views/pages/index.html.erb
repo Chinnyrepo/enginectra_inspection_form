@@ -4,24 +4,39 @@
   <head>
     <title>InspecModule</title>
     <%= csrf_meta_tags %>
-
+    <%# <%= stylesheet_link_tag "eng-app.webflow" , media: 'all', 'data-turbolinks-track': 'reload'%>  
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <%= yield %>
-    <div class="jumbotron text-center">
-    <h1 style="text-align: center">Book fire Alarm Verification</h1>
-    </div>
-    <br><br><br>
-    <div class = "container center">
-        <div class="center" style="text-align: center">
-        
-            <a href="signinc" class="btn btn-primary btn-lg ">I am a returning Customer</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            <a href="signupc" class="btn btn-primary btn-lg ">I am a New Customer</a>
-        
+    <div class="container-app">
+      <div class = "container center">
+        <a href="#" class = "brand w-inline-block">
+        <img src="..images/testimage.jpeg" loading = "lazy" alt>
+        </a> 
+        <img src="images/bg-corner-l.svg" loading = "lazy" alt class="corner-l">
+        <img src="images/bg-corner-r.svg" loading = "lazy" alt class="corner-r">
+        <div class="welcome center">
+          <h1>Welcome to <span class = "span-semibold">Enginectra</span></h1>
+          <div class = "welcome-text"> Log in Or Sign up to book your fire alarm verification</div>
         </div>
+        <div class = "buttons">
+          <a href= "signinc" class = "main-button w-button"> New Customer </a>
+          <a href= "signupc" class = "main-button w-button"> Returning Customer </a>
+        </div>
+        <div class = "users">
+          <a href = "engineer" class = "user-block w-inline-block" >
+            <img src = "images/engineer.svg" loading = "lazy" alt>
+            <div class = "user-title"> Engineer </div>
+          </a>
+          <a href = "admin" class = "user-block w-inline-block">
+            <img src = "images/admin.svg" loading = "lazy" alt>
+            <div class = "user-title"> Admin </div>
+          </a>
+        </div>
+      </div>
     </div>
   </body>
 </html>
